@@ -31,9 +31,9 @@ from random import randint
 ################################################################
 
 # Initialize world
-name = "Cat Fun. Press the mouse (but not too fast)!"
-width = 500
-height = 500
+name = "Strodinger's Cat"
+width = 1200
+height = 600
 rw.newDisplay(width, height, name)
 
 ################################################################
@@ -88,31 +88,36 @@ def endState(state):
 #
 # state -> event -> state
 #
+    
 def handleEvent(state, event):
-    print(event)
-#    print("Handling event: " + str(event))
-    if (event.type == pg.MOUSEBUTTONDOWN):
-        if (state[1]) > 0:
-            newStatex = - randint(1, 5)
+    print(type(event))
+    print(pg.K_w)
+    if (event.type == pg.KEYDOWN):
+        if (event.key == pg.K_w):
+            newStatey = -2
+            return((state[0], state[1], state[2], newStatey))
+        if (event.key == pg.K_a):
+            newStatex = -2
+            return((state[0], newStatex, state[2], state[3]))
+        if (event.key == pg.K_s):
+            newStatey = 2
+            return((state[0], state[1], state[2], newStatey))
+        if (event.key == pg.K_d):
+            newStatex = 2
+            return((state[0], newStatex, state[2], state[3]))
         else:
-            newStatex = randint(1, 5)
-        if (state[3]) > 0:
-            newStatey = - randint(1, 5)
-        else:
-            newStatey = randint(1, 5)
-        return((state[0], newStatex, state[2], newStatey))
+            return(state)
     else:
         return(state)
-
 ################################################################
 
 # World state will be single x coordinate at left edge of world
 
 # The cat starts at the left, moving right 
-initState = (randint(0, width-1), randint(1, 5), randint(0, height-1), randint(1, 5))
+initState = (randint(100, width-100), randint(1, 2), randint(100, height-100), randint(1, 2))
 
 # Run the simulation no faster than 60 frames per second
-frameRate = 15
+frameRate = 30
 
 # Run the simulation!
 rw.runWorld(initState, updateDisplay, updateState, handleEvent,
