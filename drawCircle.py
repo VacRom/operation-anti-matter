@@ -20,7 +20,6 @@ blue = (0, 0, 255)
 green = (0, 255, 0)
 red = (255, 0, 0)
  
-pi = 3.141592653
  
 # Set the height and width of the screen
 size = [800, 500]
