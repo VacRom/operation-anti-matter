@@ -16,8 +16,11 @@ state = []
 for n in range(totalCircles):
     radius = rn.randint(5,10)
     x = rn.randint(0, 3)
-    velx = rn.randint(-7,7)
-    vely = rn.randint(-7,7)
+    velx = 0
+    vely = 0
+    while velx == 0 and vely == 0:
+        velx = rn.randint(-7,7)
+        vely = rn.randint(-7,7)
     if x == 0:
         color = (255, 0, 0)
     if x == 1:
@@ -26,7 +29,7 @@ for n in range(totalCircles):
         color = (0, 0, 255)
     if x == 3:
         color = (0, 0, 0)
-    state.append([rn.randint(0, width), velx, rn.randint(0, height), vely, radius, color])
+    state.append([rn.randint(10, width-10), velx, rn.randint(10, height-10), vely, radius, color])
 
 # Setting up the game.
 done = False
@@ -82,7 +85,7 @@ while not done:
             if state[n][2] < state[n][4] or state[n][2] > height-state[n][4]:
                 state[n][2] = state[n][2]-state[n][3]
                 state[n][3] = - state[n][3]
-             # Collisions
+            # Collisions
             for m in range(totalCircles):
                 if state[m][4] != 0:
                     if n != m and math.hypot(state[m][0]-state[n][0],state[m][2]-state[n][2]) < state[n][4]+state[m][4] and state[m][4] != 0:
