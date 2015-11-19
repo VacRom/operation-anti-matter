@@ -1,6 +1,7 @@
 import pygame as pg
 import random as rn
 import math
+import matplotlib.pyplot as plt
 
 pg.init()
 
@@ -9,7 +10,7 @@ height = 650
 size = (width, height)
 screen = pg.display.set_mode(size)
 pg.display.set_caption("Circles Simulation")
-totalCircles = 500
+totalCircles = 50
 
 state = []
 time = 0
@@ -135,6 +136,16 @@ while not done:
     ballsExist = len (subB) + len(subR) + len (subG) + len (subU)
     ratioState = [int(100 * (len (subB) / ballsExist)), int(100 * (len (subR) / ballsExist)), int((100 * len (subG) / ballsExist)), int((100 * len (subU) / ballsExist))]
     print(colorState, ratioState)
+
+    labels = 'Black', 'Red', 'Green', 'Blue'
+    sizes = [ratioState[0], ratioState[1], ratioState[2], ratioState[3]]
+    colors = [(0,0,0),(1,0,0),(0,1,0),(0,0,1)]
+    explode = (0,0,0,0)
+    plt.pie(sizes, explode=explode, labels=labels, colors=colors, autopct='%1.1f%%', shadow=False, startangle=90)
+    plt.axis('equal')
+    fig=plt.figure()
+    ax = fig.gca()
+    
     pg.display.flip()
     clock.tick(60)
     time = time + 1
