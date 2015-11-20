@@ -4,3 +4,15 @@ Tommy Jun (tbj2cu@virginia.edu)
 Katharine Xie (kx3jj@virginia.edu)
 
 Use the wiki to share and work on ideas!
+
+Directory Guide:
+CatGame: Prof. Sullivan's Cat simulation.
+
+CircleSim: The simulation project.
+
+ORIGINAL: All original files.
+
+TESTS: A place to put all testing files which may or may not be
+functional.
+
+TUTORIAL: A tutorial for a top-down and side-scrolling game engine.

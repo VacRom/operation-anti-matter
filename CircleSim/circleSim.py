@@ -14,9 +14,9 @@ import matplotlib.pyplot as plt
 'The Blue species move like the Black species, in straight lines, but with an increased speed. Due to their great speed their initial sizes is smaller than average.'
 
 'Here are user input parameters:'
-screenWidth = 1200
-screenHeight = 650
-totalCircles = 500
+screenWidth = 400
+screenHeight = 400
+totalCircles = 200
 
 TeamRedSizeAdvantage = 1
 TeamBlueSpeedAdvantage = 5
@@ -160,7 +160,7 @@ while not done:
    
     
     pg.display.flip()
-    clock.tick(20)
+    clock.tick(30)
     pg.display.set_caption(str(ratioState))
     print (ratioState)
     time = time + 1
