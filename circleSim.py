@@ -3,19 +3,41 @@ import random as rn
 import math
 import matplotlib.pyplot as plt
 
+'This simulation is based on the motions of microbes on a dish. The idea was based on the game Agario where players, represented by circles, consume other players to grow larger. In this simulation we have four different bacteria species: Black, Red, Green, and Blue. Each one of them has their own behaviors which may give them advantages or disadvantages depending on the game parameters.'
+
+'The Black species move around the screen with a moderate velocity and bounce off any walls. They are our control species where there are no advantages or disadvantages.'
+
+'The Red species cannot move deterministically. They follow random, Brownian, motion. On average they are larger than other species.'
+
+'The Green species move towards each other in order to work together to increase their size rapidly; however, this advantageous adaptation is compensated by reduced speed compared to other species.'
+
+'The Blue species move like the Black species, in straight lines, but with an increased speed. Due to their great speed their initial sizes is smaller than average.'
+
+'Here are user input parameters:'
+screenWidth = 1200
+screenHeight = 650
+totalCircles = 500
+
+TeamRedSizeAdvantage = 1
+TeamBlueSpeedAdvantage = 5
+
+'End of parameters'
+
+'The purpose of this simulation is to change the parameters to investigate which species will naturally dominate the others. Note that the percentage remaining of different color types is indicated in the head text as [Black, Red, Green, Blue].'
+
 pg.init()
 
-width = 1200
-height = 650
+width = screenWidth
+height = screenHeight
 size = (width, height)
 screen = pg.display.set_mode(size)
-pg.display.set_caption("Circles Simulation")
-totalCircles = 50
+pg.display.set_caption("sim")
 
 state = []
 time = 0
-bspeed = 5
+bspeed = TeamBlueSpeedAdvantage
 
+# This generates the initial conditions for our circles.
 for n in range(totalCircles):
     radius = rn.randint(6,8)
     x = rn.randint(0, 3)
@@ -25,7 +47,7 @@ for n in range(totalCircles):
         velx = rn.randint(-7,7)
         vely = rn.randint(-7,7)
     if x == 0:
-        radius = 1 + radius
+        radius = TeamRedSizeAdvantage + radius
         color = (255, 0, 0)
     if x == 1:
         color = (0, 255, 0)
@@ -135,19 +157,18 @@ while not done:
     colorState = [len (subB), len (subR), len (subG), len (subU), time]
     ballsExist = len (subB) + len(subR) + len (subG) + len (subU)
     ratioState = [int(100 * (len (subB) / ballsExist)), int(100 * (len (subR) / ballsExist)), int((100 * len (subG) / ballsExist)), int((100 * len (subU) / ballsExist))]
-    print(colorState, ratioState)
-
-    labels = 'Black', 'Red', 'Green', 'Blue'
-    sizes = [ratioState[0], ratioState[1], ratioState[2], ratioState[3]]
-    colors = [(0,0,0),(1,0,0),(0,1,0),(0,0,1)]
-    explode = (0,0,0,0)
-    plt.pie(sizes, explode=explode, labels=labels, colors=colors, autopct='%1.1f%%', shadow=False, startangle=90)
-    plt.axis('equal')
-    fig=plt.figure()
-    ax = fig.gca()
+    #labels = 'Black', 'Red', 'Green', 'Blue'
+    #sizes = [ratioState[0], ratioState[1], ratioState[2], ratioState[3]]
+    #colors = [(0,0,0),(1,0,0),(0,1,0),(0,0,1)]
+    #explode = (0,0,0,0)
+    #plt.pie(sizes, explode=explode, labels=labels, colors=colors, autopct='%1.1f%%', shadow=False, startangle=90)
+    #plt.axis('equal')
+    #fig=plt.figure()
+    #ax = fig.gca()
     
     pg.display.flip()
-    clock.tick(60)
+    clock.tick(20)
+    pg.display.set_caption(str(ratioState))
     time = time + 1
 pg.quit()
 
