@@ -157,18 +157,30 @@ while not done:
     colorState = [len (subB), len (subR), len (subG), len (subU), time]
     ballsExist = len (subB) + len(subR) + len (subG) + len (subU)
     ratioState = [int(100 * (len (subB) / ballsExist)), int(100 * (len (subR) / ballsExist)), int((100 * len (subG) / ballsExist)), int((100 * len (subU) / ballsExist))]
-    #labels = 'Black', 'Red', 'Green', 'Blue'
-    #sizes = [ratioState[0], ratioState[1], ratioState[2], ratioState[3]]
-    #colors = [(0,0,0),(1,0,0),(0,1,0),(0,0,1)]
-    #explode = (0,0,0,0)
-    #plt.pie(sizes, explode=explode, labels=labels, colors=colors, autopct='%1.1f%%', shadow=False, startangle=90)
-    #plt.axis('equal')
-    #fig=plt.figure()
-    #ax = fig.gca()
+   
     
     pg.display.flip()
     clock.tick(20)
     pg.display.set_caption(str(ratioState))
+    print (ratioState)
     time = time + 1
+
+    # Data to plot
+#    labels = 'black', 'red', 'green', 'blue'
+#    sizes = [ratioState[0], ratioState[1], ratioState[2], ratioState[3]]
+#    colors = ['black', 'red', 'green', 'blue']
+#    explode = (0.1, 0, 0, 0)  # explode 1st slice
+ 
+    # Plot
+#   plt.pie(sizes, explode=explode, labels=labels, colors=colors,
+#                autopct='%1.1f%%', shadow=True, startangle=140)
+ 
+
+#    plt.axis('equal')
+#    def new_pie():
+        
+        
+#    plt.show()
+
 pg.quit()
 
