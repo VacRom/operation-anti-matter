@@ -74,6 +74,7 @@ def updateDisplay(state):
         dw.erase()
         dw.draw(state['original'], (0,0))
         dw.draw(state['processed'], (((state['original']).get_size())[0],0))
+        # drawworld.flush(): Needed to update the image.
         dw.flush()
         state['needsDisplayUpdate'] = False
 
@@ -116,13 +117,15 @@ def handleKeyDown(state, unicode, key, mod):
     # in the dictionary. So the following command gets the function
     # designated by the given character, or "badChoice" if there
     # isn't one.
-    #
+    # .get is like "lookup" except you can offer a second parameter
+    # that returns a default value for keys that are not in the menu.
     funcToRun = af.menu.get(key, af.badChoice)
 
     # Run the selected function!
     #
     # Quiz: Why do we not have to write: state = funcToRun(state)?
-    #
+    # Answer(Test Question): Not in the world of pure functional
+    # programming!
     funcToRun(state)
 
     return(state)

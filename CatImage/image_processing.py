@@ -27,6 +27,20 @@ def inverse(pixel):
 def intensify(pixel,quantity):
     return (pixel[0]+quantity, pixel[1]+quantity, pixel[2]+quantity)
 
+def bw(image_surf):
+
+    # get pixel dimensions of image
+    rows = image_surf.get_size()[0]
+    cols = image_surf.get_size()[1]
+    
+    # get reference to and lock pixel array
+    pixels3d = pg.surfarray.pixels3d(image_surf)
+
+    # update pixels in place (side effect!)
+    for x in range(rows):
+        for y in range(cols):
+            pixels3d[x,y] = grayPixel(pixels3d[x,y])
+    
 
 def invert(image_surf):
 

@@ -36,6 +36,15 @@ def negative(state):
     state['needsDisplayUpdate'] = True
     return state
 
+
+
+
+#####
+def bwconvert(state):
+    (ip.bw)(state['processed'])
+    state['needsDisplayUpdate'] = True
+    return state
+
 ################################################################
 
 # load: state -> state (IO)
@@ -82,6 +91,7 @@ menu = {
     110 : negative,  # n
     114 : reset,     # r
     108 : load,      # l
-    115 : save       # s
+    115 : save,      # s
+     98 : bwconvert  #b
     }
 
