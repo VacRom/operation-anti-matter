@@ -14,9 +14,9 @@ import matplotlib.pyplot as plt
 'The Blue species move like the Black species, in straight lines, but with an increased speed. Due to their great speed their initial sizes is smaller than average.'
 
 'Here are user input parameters:'
-screenWidth = 400
-screenHeight = 400
-totalCircles = 200
+screenWidth = 1200
+screenHeight = 800
+totalCircles = 500
 
 TeamRedSizeAdvantage = 1
 TeamBlueSpeedAdvantage = 5
