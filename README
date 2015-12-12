@@ -1,3 +1,6 @@
+Professor/TA check
+CircleSimRefactor.circleSim-oo.py: For the simulation project, refactored.
+
 CS-1113, Sullivan
 
 Tommy Jun (tbj2cu@virginia.edu)
@@ -7,8 +10,6 @@ Use the wiki to share and work on ideas!
 
 Directory Guide:
 CatGame: Prof. Sullivan's Cat simulation.
-
-CircleSimRefactor: The simulation project refactored.
 
 CircleSim: The simulation project.
 
